@@ -57,7 +57,8 @@ function createPostCard(post) {
     <p class="post-excerpt">${excerpt}</p>
   `;
   article.addEventListener('click', () => {
-    sessionStorage.setItem('currentPost', JSON.stringify(post));
+    const dbId = post.index ? String(post.index) : String(allPosts.indexOf(post) + 1);
+    sessionStorage.setItem('currentPost', JSON.stringify({ ...post, _dbId: dbId }));
     const navId = post.index || post.id || post._id;
     window.location.href = `./post-view.html?id=${navId}`;
   });

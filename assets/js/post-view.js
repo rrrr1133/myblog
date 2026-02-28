@@ -104,10 +104,16 @@ async function loadPost() {
     // UUID(숫자가 아닌 ID)이면 sessionStorage 데이터 사용
     if (postId && !/^\d+$/.test(postId)) {
       if (cached) {
-        renderPost(JSON.parse(cached));
-        // localStorage에서 이 UUID에 해당하는 db_id(index) 조회 → 삭제 시 사용
-        const localPost = getLocalPosts(getUsername()).find(p => p.id === postId || p._id === postId);
-        if (localPost?.index) realDeleteId = String(localPost.index);
+        const cachedPost = JSON.parse(cached);
+        renderPost(cachedPost);
+        // 1순위: home.js가 저장한 db_id
+        if (cachedPost._dbId) {
+          realDeleteId = String(cachedPost._dbId);
+        } else {
+          // 2순위: localStorage에 저장된 index
+          const localPost = getLocalPosts(getUsername()).find(p => p.id === postId || p._id === postId);
+          if (localPost?.index) realDeleteId = String(localPost.index);
+        }
       } else {
         window.location.href = './home.html';
       }
