@@ -205,7 +205,6 @@ myblog/
 |                 포스트 상세                 |                 포스트 작성                  |
 | ![상세](./assets/img/screenshot-detail.PNG) |  ![작성](./assets/img/screenshot-write.PNG)  |
 
-> 스크린샷 이미지는 실제 캡처 후 `assets/img/` 폴더에 추가해 주세요.
 
 ---
 
