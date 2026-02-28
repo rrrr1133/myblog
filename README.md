@@ -34,7 +34,7 @@
 
 ## 배포 URL
 
-> https://rrrr1133.github.io/myblog/home.html
+> https://rrrr1133.github.io/myblog/
 
 ---
 
@@ -261,8 +261,9 @@ API의 DELETE 엔드포인트가 **soft delete** 방식으로 동작 — 레코�
 
 **해결**
 `home.js`의 `loadPosts()`에서 API 응답을 렌더링하기 전 `title`이 없는 항목을 필터링하여 제외
+
 ```js
-const validPosts = posts.filter(p => p.title);
+const validPosts = posts.filter((p) => p.title);
 allPosts = validPosts.length > 0 ? validPosts : getLocalPosts(getUsername());
 ```
 
@@ -285,19 +286,22 @@ sessionStorage fallback은 API가 200을 반환했기 때문에 실행되지 않
 1. **`home.js`** — 필터 전 원본 배열(`rawPosts`)을 별도 보관하고 `_dbId` 계산에 활용
    ```js
    rawPosts = posts; // 원본 보관
-   const validPosts = posts.filter(p => p.title);
+   const validPosts = posts.filter((p) => p.title);
    // 카드 클릭 시: rawPosts.indexOf(post) + 1  ← 정확한 db_id
    ```
 2. **`post-view.js`** — 수정 버튼 클릭 시 `editPost`에 `_editDbId` 포함하여 저장
    ```js
-   sessionStorage.setItem('editPost', JSON.stringify({ ...currentPost, _editDbId: realDeleteId }));
+   sessionStorage.setItem(
+     "editPost",
+     JSON.stringify({ ...currentPost, _editDbId: realDeleteId }),
+   );
    ```
 3. **`post-write.js`** — sessionStorage를 API보다 먼저 읽어 pre-fill하고, `editDbId`로 PUT/DELETE 수행
    ```js
    // loadPost(): sessionStorage 우선 → API fallback
    if (post._editDbId) editDbId = String(post._editDbId);
    // savePost(): editDbId 사용
-   res = await apiFetch(`/blog/${editDbId}`, { method: 'PUT', body });
+   res = await apiFetch(`/blog/${editDbId}`, { method: "PUT", body });
    ```
 
 ---
