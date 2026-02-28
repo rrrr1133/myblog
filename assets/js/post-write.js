@@ -134,7 +134,14 @@ async function savePost() {
 
   let bodyObj;
   if (isEditMode) {
-    bodyObj = { title, content };
+    const existing = getLocalPosts(getUsername()).find(
+      p => String(p.index) === String(postId) || p.id === postId || p._id === postId
+    );
+    bodyObj = {
+      title, content,
+      author: existing?.author || getUsername(),
+      date: existing?.date || '',
+    };
   } else {
     bodyObj = {
       title,
@@ -195,11 +202,40 @@ async function saveAndNavigate() {
   try {
     const data = await savePost();
     if (!data) return;
-    const newId = data.index || postId;
-    if (newId) {
-      window.location.href = `./post-view.html?id=${newId}`;
+
+    if (isEditMode) {
+      // 수정 완료: 기존 ID로 상세 페이지 이동
+      window.location.href = `./post-view.html?id=${postId}`;
     } else {
-      window.location.href = './home.html';
+      // 신규 포스트: sessionStorage에 저장 후 상세 페이지로 직접 이동
+      const username = getUsername();
+      const newPost = {
+        title: titleInput.value.trim(),
+        content: contentTextarea.value.trim(),
+        author: username,
+        date: new Date().toISOString().split('T')[0],
+        id: data.id,
+        _id: data._id,
+        index: data.index,
+      };
+
+      // GET /blog로 새 포스트의 배열 위치(=db_id) 계산 — 삭제 기능에 사용
+      try {
+        const listRes = await fetch(API_BASE + '/blog', { cache: 'no-store' });
+        if (listRes.ok) {
+          const posts = await listRes.json();
+          const idx = posts.findIndex(p => p.id === data.id || p._id === data.id);
+          if (idx >= 0) newPost._dbId = String(idx + 1);
+        }
+      } catch {}
+
+      const navId = data.id || data._id;
+      if (navId) {
+        sessionStorage.setItem('currentPost', JSON.stringify(newPost));
+        window.location.href = `./post-view.html?id=${navId}`;
+      } else {
+        window.location.href = './home.html';
+      }
     }
   } catch {
     alert('저장에 실패했습니다.');

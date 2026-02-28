@@ -117,7 +117,7 @@ if (btnLoadMore) {
 
 async function loadPosts() {
   try {
-    const res = await fetch(API_BASE + '/blog');
+    const res = await fetch(API_BASE + '/blog', { cache: 'no-store' });
     if (!res.ok) throw new Error('fetch failed');
     const posts = await res.json();
 

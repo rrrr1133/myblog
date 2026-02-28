@@ -79,13 +79,23 @@ if (deleteModal) {
   });
 }
 
+function isMyPost(post) {
+  if (post.author && post.author === getUsername()) return true;
+  const localPosts = getLocalPosts(getUsername());
+  return localPosts.some(p =>
+    (post.id && p.id === post.id) ||
+    (post._id && (p.id === post._id || p._id === post._id)) ||
+    (postId && (p.id === postId || p._id === postId || String(p.index) === String(postId)))
+  );
+}
+
 function renderPost(post) {
   currentPost = post;
   document.title = post.title || 'Post View';
   if (postTitle) postTitle.textContent = post.title || '';
   if (authorName) authorName.textContent = post.author || '';
   if (postDate) postDate.textContent = formatDate(post.date);
-  if (post.author === getUsername() && postActions) {
+  if (isMyPost(post) && postActions) {
     postActions.style.display = 'flex';
   }
   if (contentImg) {
