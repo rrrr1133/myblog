@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/home.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./img/Logo.svg" alt="myblog" class="logo" />
+      <nav>
+        <div class="profile-filled">
+          <img src="./img/profile.png" alt="profile" />
+        </div>
+        <button type="button" class="btn-write">
+          <img src="./img/icon-modify-white.svg" alt="write" />
+          Write
+        </button>
+        <button type="button" class="btn-logout">
+          <img src="./img/icon-logout.svg" alt="logout" />
+          Logout
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="background">
+        <div class="banner-logined">
+          <div class="banner-overlay"></div>
+          <div class="banner-line top"></div>
+          <p class="banner-subtitle">React &amp; Node</p>
+          <div class="banner-line bottom"></div>
+          <p class="banner-title">My BLOG</p>
+          <p class="banner-desc">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
+            quibusdam ipsa quis quidem doloribus eos.
+          </p>
+        </div>
+
+        <div class="content-wrapper">
+          <aside class="about-card">
+            <!-- Profile Section -->
+            <div class="about-profile">
+              <p class="about-heading">About Me</p>
+              <div class="about-avatar">
+                <img src="./img/profile.png" alt="profile" />
+              </div>
+              <p class="about-name">User</p>
+              <p class="about-desc">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+            </div>
+
+            <!-- Categories Section -->
+            <div class="about-categories">
+              <p class="about-heading">Categories</p>
+              <div class="about-tags-row">
+                <span class="about-tag">Life</span>
+                <span class="about-tag">Style</span>
+                <span class="about-tag">Tech</span>
+                <span class="about-tag">Music</span>
+              </div>
+              <div class="about-tags-row">
+                <span class="about-tag">Sport</span>
+                <span class="about-tag">Photo</span>
+                <span class="about-tag">Develop</span>
+              </div>
+            </div>
+
+            <!-- Follow Section -->
+            <div class="about-follow">
+              <p class="about-heading">Follow</p>
+              <div class="about-social">
+                <img src="./img/Facebook.svg" alt="facebook" />
+                <img src="./img/Twitter.svg" alt="twitter" />
+                <img src="./img/Instagram.svg" alt="instagram" />
+                <img src="./img/Github.svg" alt="github" />
+              </div>
+            </div>
+          </aside>
+
+          <div class="post-area">
+            <div class="post-grid">
+              <p class="empty-state" id="empty-state" style="display:none;">아직 작성된 글이 없습니다.</p>
+            </div>
+            <button type="button" class="btn-load-more" id="btn-load-more" style="display:none;">더보기</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>©Wenais Corp.</p>
+      <button class="btn-top">
+        <img src="./img/ArrowTop.svg" alt="top" />
+      </button>
+    </footer>
+    <script src="./js/api.js"></script>
+    <script src="./js/home.js"></script>
+  </body>
+</html>

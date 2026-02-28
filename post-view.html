@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post View</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/post-view.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./img/Logo.svg" alt="myblog" class="logo" />
+      <nav>
+        <div class="profile-filled">
+          <img src="./img/profile.png" alt="profile" />
+        </div>
+        <button type="button" class="btn-write">
+          <img src="./img/icon-modify-white.svg" alt="write" />
+          Write
+        </button>
+        <button type="button" class="btn-logout">
+          <img src="./img/icon-logout.svg" alt="logout" />
+          Logout
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="background">
+        <div class="banner-logined">
+          <div class="banner-overlay"></div>
+          <div class="banner-line top"></div>
+          <p class="banner-subtitle">React &amp; Node</p>
+          <div class="banner-line bottom"></div>
+          <p class="banner-title">My BLOG</p>
+          <p class="banner-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error quibusdam ipsa quis quidem doloribus eos.</p>
+        </div>
+
+        <article class="post-view-card">
+          <button type="button" class="btn-back">
+            <img src="./img/ArrowLeft-blue.svg" alt="back" />
+          </button>
+
+          <div class="post-view-meta">
+            <div class="post-author">
+              <div class="author-avatar">
+                <img src="./img/profile.png" alt="author" />
+              </div>
+              <span class="author-name" id="post-author-name"></span>
+              <div class="author-divider"></div>
+              <span class="post-date" id="post-date"></span>
+            </div>
+            <div class="post-actions" id="post-actions" style="display:none;">
+              <button type="button" class="btn-modify">
+                <img src="./img/icon-modify.svg" alt="modify" />
+              </button>
+              <button type="button" class="btn-delete">
+                <img src="./img/icon-delete-white.svg" alt="delete" />
+              </button>
+            </div>
+          </div>
+
+          <div class="post-title-row">
+            <h1 class="post-title" id="post-title"></h1>
+            <button type="button" class="btn-like">
+              <img src="./img/icon-like.svg" alt="like" />
+              Save
+            </button>
+          </div>
+
+          <div class="post-divider"></div>
+
+          <div class="post-content">
+            <div class="post-content-img" id="post-content-img" style="display:none;"></div>
+            <p class="post-body-text" id="post-content"></p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>©Wenais Corp.</p>
+      <button class="btn-top">
+        <img src="./img/ArrowTop.svg" alt="top" />
+      </button>
+    </footer>
+
+    <!-- 삭제 확인 모달 -->
+    <div class="modal-overlay" id="delete-modal" style="display:none;">
+      <div class="modal-box">
+        <p>정말로 이 포스트를 삭제하시겠습니까?</p>
+        <div class="modal-actions">
+          <button type="button" class="btn-modal-cancel" id="btn-modal-cancel">취소</button>
+          <button type="button" class="btn-modal-confirm" id="btn-modal-confirm">삭제</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/post-view.js"></script>
+  </body>
+</html>

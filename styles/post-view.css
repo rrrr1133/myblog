@@ -1,0 +1,478 @@
+@charset "utf-8";
+
+/* ===== Header ===== */
+header {
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 108px;
+}
+
+.logo {
+  width: 121px;
+  height: 27px;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-filled {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-filled img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-write {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 96px;
+  height: 40px;
+  border-radius: 8px;
+  background: #37abec;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-write:hover {
+  background: #2196d3;
+}
+
+.btn-write img {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 96px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.btn-logout img {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== Banner ===== */
+.background {
+  position: relative;
+  height: 420px;
+  margin-bottom: 996px;
+  background: url(../img/background\ 1.png) center center / cover;
+}
+
+/* ===== Banner Overlay (Logined) ===== */
+.banner-logined {
+  position: absolute;
+  width: 36.39%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.banner-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #28303f;
+  opacity: 0.5;
+}
+
+.banner-line {
+  position: absolute;
+  left: 108px;
+  width: 240px;
+  height: 1px;
+  background: #f9f9f9;
+  opacity: 0.3;
+}
+
+.banner-line.top {
+  top: 160px;
+}
+
+.banner-line.bottom {
+  top: 197px;
+}
+
+.banner-subtitle {
+  position: absolute;
+  left: 145px;
+  top: 167px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.2em;
+  color: #f9f9f9;
+}
+
+.banner-title {
+  position: absolute;
+  left: 115px;
+  top: 206px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 64px;
+  color: #f9f9f9;
+}
+
+.banner-desc {
+  position: absolute;
+  left: 108px;
+  top: 295px;
+  width: 288px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #f9f9f9;
+}
+
+/* ===== Post View Card ===== */
+.post-view-card {
+  position: absolute;
+  top: 120px;
+  left: 420px;
+  width: 912px;
+  padding: 80px;
+  background: #ffffff;
+  border-radius: 10px;
+  min-height: 1206px;
+}
+
+/* Back Button */
+.btn-back {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-back img {
+  width: 40px;
+  height: 40px;
+}
+
+.btn-back:hover {
+  background: #e0e0e0;
+}
+
+/* Post Meta (Author + Actions) */
+.post-view-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.post-author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  height: 32px;
+}
+
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-name,
+.post-date {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #767676;
+}
+
+.author-divider {
+  width: 1px;
+  height: 10px;
+  background: #cccccc;
+  flex-shrink: 0;
+}
+
+.post-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.btn-modify,
+.btn-delete {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(245, 245, 245, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-modify img,
+.btn-delete img {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-modify:hover,
+.btn-delete:hover {
+  background: #f5f5f5;
+}
+
+/* Categories */
+.post-categories {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.category-tag {
+  display: flex;
+  align-items: center;
+  padding: 2px 12px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #37abec;
+}
+
+/* Title + Like Row */
+.post-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 35px;
+}
+
+.post-title {
+  width: 417px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #000000;
+}
+
+.btn-like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  width: 120px;
+  height: 40px;
+  border: 1px solid #f37c4b;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.btn-like img {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-like:hover {
+  background: #fff5f0;
+}
+
+/* Divider */
+.post-divider {
+  width: 100%;
+  height: 1px;
+  background: #dddddd;
+  margin-bottom: 38px;
+}
+
+/* Post Content */
+.post-body-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  text-align: justify;
+  color: #000000;
+  margin-bottom: 39px;
+}
+
+.post-content-img {
+  width: 100%;
+  height: 300px;
+  background: #dddddd center center / cover;
+  margin-bottom: 41px;
+}
+
+.post-body-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Footer ===== */
+footer {
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+footer p {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #666666;
+}
+
+.btn-top {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  right: 108px;
+  bottom: 0;
+  background: #37abec;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-top img {
+  width: 60%;
+  height: 60%;
+}
+
+.btn-top:hover {
+  background: #2196d3;
+}
+
+/* ===== Delete Confirmation Modal ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px 32px;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.modal-box p {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #28303f;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-modal-cancel {
+  width: 120px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
+  color: #767676;
+  cursor: pointer;
+}
+
+.btn-modal-cancel:hover {
+  background: #f5f5f5;
+}
+
+.btn-modal-confirm {
+  width: 120px;
+  height: 44px;
+  border-radius: 8px;
+  background: #e74c3c;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-modal-confirm:hover {
+  background: #c0392b;
+}

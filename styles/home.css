@@ -1,0 +1,533 @@
+@charset "utf-8";
+
+/* ===== Header ===== */
+header {
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 108px;
+}
+
+.logo {
+  width: 121px;
+  height: 27px;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-filled {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-filled img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-write {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 96px;
+  height: 40px;
+  border-radius: 8px;
+  background: #37abec;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-write:hover {
+  background: #2196d3;
+}
+
+.btn-write img {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 96px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.btn-logout img {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== Banner ===== */
+.background {
+  position: relative;
+  height: 420px;
+  margin-bottom: 820px;
+  background: url(../img/background\ 1.png) center center / cover;
+}
+
+/* ===== Banner Overlay (Logined) ===== */
+.banner-logined {
+  position: absolute;
+  width: 36.39%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.banner-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #28303f;
+  opacity: 0.5;
+}
+
+.banner-line {
+  position: absolute;
+  left: 108px;
+  width: 240px;
+  height: 1px;
+  background: #f9f9f9;
+  opacity: 0.3;
+}
+
+.banner-line.top {
+  top: 160px;
+}
+
+.banner-line.bottom {
+  top: 197px;
+}
+
+.banner-subtitle {
+  position: absolute;
+  left: 145px;
+  top: 167px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.2em;
+  color: #f9f9f9;
+}
+
+.banner-title {
+  position: absolute;
+  left: 115px;
+  top: 206px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 64px;
+  color: #f9f9f9;
+}
+
+.banner-desc {
+  position: absolute;
+  left: 108px;
+  top: 295px;
+  width: 288px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #f9f9f9;
+}
+
+/* ===== Content Wrapper (About + Grid centered) ===== */
+.content-wrapper {
+  position: absolute;
+  top: 321px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* ===== About Card ===== */
+.about-card {
+  width: 288px;
+  height: 574px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 40px 24px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+/* About Profile Section */
+.about-profile {
+  position: relative;
+  width: 240px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.about-heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.about-avatar {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.about-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-name {
+  position: absolute;
+  top: 132px;
+  left: 0;
+  width: 100%;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #37abec;
+}
+
+.about-desc {
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 100%;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+/* About Categories Section */
+.about-categories {
+  width: 228px;
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-categories .about-heading {
+  position: static;
+  width: auto;
+}
+
+.about-tags-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.about-tag {
+  display: flex;
+  align-items: center;
+  padding: 2px 12px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #666666;
+}
+
+/* About Follow Section */
+.about-follow {
+  width: 112px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-follow .about-heading {
+  position: static;
+  width: auto;
+}
+
+.about-social {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.about-social img {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== Post Area (grid + 더보기 버튼 래퍼) ===== */
+.post-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ===== Post Grid ===== */
+.post-grid {
+  width: 912px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===== 더보기 버튼 ===== */
+.btn-load-more {
+  width: 200px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #37abec;
+  background: #ffffff;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #37abec;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-load-more:hover {
+  background: #37abec;
+  color: #ffffff;
+}
+
+.post-row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+/* ===== Post Card ===== */
+.post-card {
+  position: relative;
+  width: 288px;
+  height: 400px;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.post-img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 181px;
+  background: #dddddd center center / cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.post-categories {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 24px;
+  top: 197px;
+}
+
+.category-tag {
+  display: flex;
+  align-items: center;
+  padding: 2px 12px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #37abec;
+}
+
+.post-title {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 224px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000000;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.post-author {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  left: 24px;
+  top: 276px;
+  height: 24px;
+}
+
+.author-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-name,
+.post-date {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #767676;
+}
+
+.author-divider {
+  width: 1px;
+  height: 10px;
+  background: #cccccc;
+  flex-shrink: 0;
+}
+
+.post-excerpt {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 316px;
+  bottom: 24px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #767676;
+  overflow: hidden;
+}
+
+/* ===== Footer ===== */
+footer {
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+footer p {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #666666;
+}
+
+.btn-top {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  right: 108px;
+  bottom: 0;
+  background: #37abec;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-top img {
+  width: 60%;
+  height: 60%;
+}
+
+.btn-top:hover {
+  background: #2196d3;
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  color: #767676;
+  text-align: center;
+  padding: 60px 0;
+  width: 912px;
+}
+
+/* ===== Button disabled ===== */
+.btn-save:disabled,
+.btn-save-outline:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -1,0 +1,368 @@
+@charset "utf-8";
+
+/* ===== Header ===== */
+header {
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 108px;
+}
+
+.logo {
+  width: 121px;
+  height: 27px;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Profile Circle (Header) */
+.profile-filled {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.profile-filled img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Save Button */
+.btn-save {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 96px;
+  height: 40px;
+  background: #37abec;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-save img {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-save:hover {
+  background: #2196d3;
+}
+
+/* Logout Button */
+.btn-logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 96px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.btn-logout img {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-logout:hover {
+  background: rgba(245, 245, 245, 0.8);
+}
+
+/* ===== Banner ===== */
+.background {
+  position: relative;
+  height: 420px;
+  margin-bottom: 520px;
+  background: url(../img/background\ 1.png) center center / cover;
+}
+
+/* Logined Overlay Area */
+.banner-logined {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36.39%;
+  height: 100%;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #28303f;
+  opacity: 0.5;
+}
+
+.banner-line {
+  position: absolute;
+  left: 108px;
+  width: 240px;
+  height: 1px;
+  background: #f9f9f9;
+  opacity: 0.3;
+}
+
+.banner-line.top {
+  top: 160px;
+}
+
+.banner-line.bottom {
+  top: 197px;
+}
+
+.banner-subtitle {
+  position: absolute;
+  left: 145px;
+  top: 167px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.2em;
+  color: #f9f9f9;
+}
+
+.banner-title {
+  position: absolute;
+  left: 115px;
+  top: 206px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 64px;
+  color: #f9f9f9;
+}
+
+.banner-desc {
+  position: absolute;
+  left: 108px;
+  top: 295px;
+  width: 288px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #f9f9f9;
+}
+
+/* ===== Mypage Card ===== */
+.mypage-card {
+  position: absolute;
+  top: 99px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 912px;
+  padding: 80px 260px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.mypage-card h1 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 48px;
+}
+
+.mypage-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  width: 392px;
+}
+
+/* ===== Input Fields Group ===== */
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 392px;
+}
+
+/* ===== Profile Upload ===== */
+.input-profile {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.profile-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #eeeeee;
+}
+
+.profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-file {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: #37abec;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-file img {
+  width: 60%;
+  height: 60%;
+}
+
+/* ===== Label + Input ===== */
+.label-input {
+  position: relative;
+  width: 392px;
+  height: 67px;
+}
+
+.label-input label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+/* Default 상태 (Password) */
+.label-input input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  padding: 0 18px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  color: #333333;
+}
+
+.label-input input::placeholder {
+  font-weight: 400;
+  color: #6f6f6f;
+}
+
+/* Filled 상태 (Username, Email) */
+.label-input input.input-filled {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  color: #28303f;
+}
+
+.label-input input:focus {
+  outline: none;
+  background: #ffffff;
+  border: 1px solid rgba(39, 155, 220, 0.5);
+}
+
+/* ===== Update Button ===== */
+.btn-update {
+  width: 392px;
+  height: 48px;
+  background: #37abec;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-update:hover {
+  background: #2196d3;
+}
+
+/* ===== Footer ===== */
+footer {
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+footer p {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #666666;
+}
+
+.btn-top {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  right: 108px;
+  bottom: 0;
+  background: #37abec;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-top img {
+  width: 60%;
+  height: 60%;
+}
+
+.btn-top:hover {
+  background: #2196d3;
+}

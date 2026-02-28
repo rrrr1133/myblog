@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Write</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/post-write.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./img/Logo.svg" alt="myblog" class="logo" />
+      <nav>
+        <div class="profile-filled">
+          <img src="./img/profile.png" alt="profile" />
+        </div>
+        <button type="button" class="btn-save" disabled>
+          <img src="./img/icon-modify-white.svg" alt="save" />
+          발행
+        </button>
+        <button type="button" class="btn-logout">
+          <img src="./img/icon-logout.svg" alt="logout" />
+          Logout
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="background">
+        <div class="banner-logined">
+          <div class="banner-overlay"></div>
+          <p class="banner-date-monthday" id="banner-date-monthday"></p>
+          <p class="banner-date-day" id="banner-date-day"></p>
+        </div>
+
+        <article class="post-write-card">
+          <button type="button" class="btn-back">
+            <img src="./img/ArrowLeft-blue.png" alt="back" />
+          </button>
+          <button type="button" class="btn-delete-post">
+            <img src="./img/Delete.png" alt="delete" />
+          </button>
+          <button type="button" class="btn-save-draft" disabled>
+            <img src="./img/icon-save.svg" alt="save" />
+            임시저장
+          </button>
+
+          <form>
+            <input type="text" class="write-title" placeholder="Title" />
+            <div class="ai-draft-row">
+              <button type="button" class="btn-ai-draft" id="btn-ai-draft" disabled>
+                ✨ AI 초안 작성
+              </button>
+            </div>
+            <div class="write-divider"></div>
+            <textarea
+              class="write-content"
+              placeholder="Tell your story..."
+            ></textarea>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>©Wenais Corp.</p>
+      <button class="btn-top">
+        <img src="./img/ArrowTop.svg" alt="top" />
+      </button>
+    </footer>
+
+    <!-- 삭제 확인 모달 -->
+    <div
+      class="write-modal-overlay"
+      id="write-delete-modal"
+      style="display: none"
+    >
+      <div class="write-modal-box">
+        <p class="write-modal-title">Delete story</p>
+        <p class="write-modal-msg">
+          Are you sure you want to delete this story?
+        </p>
+        <div class="write-modal-actions">
+          <button type="button" class="btn-write-cancel" id="btn-write-cancel">
+            취소
+          </button>
+          <button type="button" class="btn-write-delete" id="btn-write-delete">
+            <img src="./img/icon-delete-white.svg" alt="delete" />
+            삭제
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 임시저장 토스트 -->
+    <div class="write-toast" id="write-toast">저장되었습니다.</div>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/post-write.js"></script>
+  </body>
+</html>

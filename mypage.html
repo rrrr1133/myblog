@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/mypage.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./img/Logo.svg" alt="myblog" class="logo" />
+      <nav>
+        <div class="profile-filled">
+          <img src="./img/profile.png" alt="profile" />
+        </div>
+        <button type="button" class="btn-save">
+          <img src="./img/icon-modify-white.svg" alt="edit" />
+          Save
+        </button>
+        <button type="button" class="btn-logout">
+          <img src="./img/icon-logout.svg" alt="logout" />
+          Logout
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="background">
+        <div class="banner-logined">
+          <div class="banner-overlay"></div>
+          <div class="banner-line top"></div>
+          <p class="banner-subtitle">React &amp; Node</p>
+          <div class="banner-line bottom"></div>
+          <p class="banner-title">My BLOG</p>
+          <p class="banner-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error quibusdam ipsa quis quidem doloribus eos.</p>
+        </div>
+
+        <article class="mypage-card">
+          <h1>UPDATE ACCOUNT</h1>
+          <form>
+            <div class="input-fields">
+              <div class="input-profile">
+                <div class="profile-circle">
+                  <img src="./img/profile.png" alt="profile" />
+                </div>
+                <button type="button" class="btn-file">
+                  <img src="./img/icon-image.svg" alt="upload" />
+                </button>
+              </div>
+
+              <div class="label-input">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="input-filled" value="BlogBlog" />
+              </div>
+
+              <div class="label-input">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="input-filled" value="blog@blog.com" />
+              </div>
+
+              <div class="label-input">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="8+ characters" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-update">UPDATE ACCOUNT</button>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>©Wenais Corp.</p>
+      <button class="btn-top">
+        <img src="./img/ArrowTop.svg" alt="top" />
+      </button>
+    </footer>
+  </body>
+</html>
