@@ -1,6 +1,7 @@
 requireAuth();
 
 let currentPost = null;
+let realDeleteId = null;
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
@@ -55,7 +56,7 @@ if (btnModalCancel) {
 if (btnModalConfirm) {
   btnModalConfirm.addEventListener('click', async () => {
     try {
-      const deleteId = currentPost?.index || postId;
+      const deleteId = realDeleteId || currentPost?.index || postId;
       const res = await apiFetch(`/blog/${deleteId}`, { method: 'DELETE' });
       deleteLocalPost(postId, getUsername());
       if (res.status === 401) {
@@ -102,8 +103,14 @@ async function loadPost() {
 
     // UUID(숫자가 아닌 ID)이면 sessionStorage 데이터 사용
     if (postId && !/^\d+$/.test(postId)) {
-      if (cached) { renderPost(JSON.parse(cached)); return; }
-      window.location.href = './home.html';
+      if (cached) {
+        renderPost(JSON.parse(cached));
+        // localStorage에서 이 UUID에 해당하는 db_id(index) 조회 → 삭제 시 사용
+        const localPost = getLocalPosts(getUsername()).find(p => p.id === postId || p._id === postId);
+        if (localPost?.index) realDeleteId = String(localPost.index);
+      } else {
+        window.location.href = './home.html';
+      }
       return;
     }
 
