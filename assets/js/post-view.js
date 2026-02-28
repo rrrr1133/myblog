@@ -27,7 +27,7 @@ const btnModalConfirm = document.getElementById('btn-modal-confirm');
 // 버튼 이벤트
 if (btnBack) btnBack.addEventListener('click', () => { window.location.href = './home.html'; });
 if (btnWrite) btnWrite.addEventListener('click', () => { window.location.href = './post-write.html'; });
-if (btnLogout) btnLogout.addEventListener('click', () => { clearAuth(); window.location.href = './login.html'; });
+if (btnLogout) btnLogout.addEventListener('click', () => { clearAuth(); window.location.href = './index.html'; });
 if (btnTop) btnTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 // 수정 버튼

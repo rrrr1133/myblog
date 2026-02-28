@@ -20,7 +20,7 @@ function clearAuth() {
 
 function requireAuth() {
   if (!getToken()) {
-    window.location.href = './login.html';
+    window.location.href = './index.html';
   }
 }
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (getToken()) {
       window.location.href = './home.html';
     } else {
-      window.location.href = './login.html';
+      window.location.href = './index.html';
     }
   });
 });

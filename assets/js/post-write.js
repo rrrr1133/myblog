@@ -66,7 +66,7 @@ if (btnBack) {
 if (btnLogout) {
   btnLogout.addEventListener('click', () => {
     clearAuth();
-    window.location.href = './login.html';
+    window.location.href = './index.html';
   });
 }
 

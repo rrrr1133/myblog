@@ -14,22 +14,22 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
     />
-    <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/post-write.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/post-write.css" />
   </head>
   <body>
     <header>
-      <img src="./img/Logo.svg" alt="myblog" class="logo" />
+      <img src="./assets/img/Logo.svg" alt="myblog" class="logo" />
       <nav>
         <div class="profile-filled">
-          <img src="./img/profile.png" alt="profile" />
+          <img src="./assets/img/profile.png" alt="profile" />
         </div>
         <button type="button" class="btn-save" disabled>
-          <img src="./img/icon-modify-white.svg" alt="save" />
+          <img src="./assets/img/icon-modify-white.svg" alt="save" />
           발행
         </button>
         <button type="button" class="btn-logout">
-          <img src="./img/icon-logout.svg" alt="logout" />
+          <img src="./assets/img/icon-logout.svg" alt="logout" />
           Logout
         </button>
       </nav>
@@ -45,13 +45,13 @@
 
         <article class="post-write-card">
           <button type="button" class="btn-back">
-            <img src="./img/ArrowLeft-blue.png" alt="back" />
+            <img src="./assets/img/ArrowLeft-blue.png" alt="back" />
           </button>
           <button type="button" class="btn-delete-post">
-            <img src="./img/Delete.png" alt="delete" />
+            <img src="./assets/img/Delete.png" alt="delete" />
           </button>
           <button type="button" class="btn-save-draft" disabled>
-            <img src="./img/icon-save.svg" alt="save" />
+            <img src="./assets/img/icon-save.svg" alt="save" />
             임시저장
           </button>
 
@@ -75,7 +75,7 @@
     <footer>
       <p>©Wenais Corp.</p>
       <button class="btn-top">
-        <img src="./img/ArrowTop.svg" alt="top" />
+        <img src="./assets/img/ArrowTop.svg" alt="top" />
       </button>
     </footer>
 
@@ -95,7 +95,7 @@
             취소
           </button>
           <button type="button" class="btn-write-delete" id="btn-write-delete">
-            <img src="./img/icon-delete-white.svg" alt="delete" />
+            <img src="./assets/img/icon-delete-white.svg" alt="delete" />
             삭제
           </button>
         </div>
@@ -105,7 +105,7 @@
     <!-- 임시저장 토스트 -->
     <div class="write-toast" id="write-toast">저장되었습니다.</div>
 
-    <script src="./js/api.js"></script>
-    <script src="./js/post-write.js"></script>
+    <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/post-write.js"></script>
   </body>
 </html>

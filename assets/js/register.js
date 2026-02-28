@@ -33,7 +33,7 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
-    window.location.href = './login.html';
+    window.location.href = './index.html';
   } catch {
     errorMsg.textContent = '서버 연결에 실패했습니다.';
   }

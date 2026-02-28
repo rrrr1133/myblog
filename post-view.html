@@ -8,22 +8,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/post-view.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/post-view.css" />
   </head>
   <body>
     <header>
-      <img src="./img/Logo.svg" alt="myblog" class="logo" />
+      <img src="./assets/img/Logo.svg" alt="myblog" class="logo" />
       <nav>
         <div class="profile-filled">
-          <img src="./img/profile.png" alt="profile" />
+          <img src="./assets/img/profile.png" alt="profile" />
         </div>
         <button type="button" class="btn-write">
-          <img src="./img/icon-modify-white.svg" alt="write" />
+          <img src="./assets/img/icon-modify-white.svg" alt="write" />
           Write
         </button>
         <button type="button" class="btn-logout">
-          <img src="./img/icon-logout.svg" alt="logout" />
+          <img src="./assets/img/icon-logout.svg" alt="logout" />
           Logout
         </button>
       </nav>
@@ -42,13 +42,13 @@
 
         <article class="post-view-card">
           <button type="button" class="btn-back">
-            <img src="./img/ArrowLeft-blue.svg" alt="back" />
+            <img src="./assets/img/ArrowLeft-blue.svg" alt="back" />
           </button>
 
           <div class="post-view-meta">
             <div class="post-author">
               <div class="author-avatar">
-                <img src="./img/profile.png" alt="author" />
+                <img src="./assets/img/profile.png" alt="author" />
               </div>
               <span class="author-name" id="post-author-name"></span>
               <div class="author-divider"></div>
@@ -56,10 +56,10 @@
             </div>
             <div class="post-actions" id="post-actions" style="display:none;">
               <button type="button" class="btn-modify">
-                <img src="./img/icon-modify.svg" alt="modify" />
+                <img src="./assets/img/icon-modify.svg" alt="modify" />
               </button>
               <button type="button" class="btn-delete">
-                <img src="./img/icon-delete-white.svg" alt="delete" />
+                <img src="./assets/img/icon-delete-white.svg" alt="delete" />
               </button>
             </div>
           </div>
@@ -67,7 +67,7 @@
           <div class="post-title-row">
             <h1 class="post-title" id="post-title"></h1>
             <button type="button" class="btn-like">
-              <img src="./img/icon-like.svg" alt="like" />
+              <img src="./assets/img/icon-like.svg" alt="like" />
               Save
             </button>
           </div>
@@ -85,7 +85,7 @@
     <footer>
       <p>©Wenais Corp.</p>
       <button class="btn-top">
-        <img src="./img/ArrowTop.svg" alt="top" />
+        <img src="./assets/img/ArrowTop.svg" alt="top" />
       </button>
     </footer>
 
@@ -100,7 +100,7 @@
       </div>
     </div>
 
-    <script src="./js/api.js"></script>
-    <script src="./js/post-view.js"></script>
+    <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/post-view.js"></script>
   </body>
 </html>
