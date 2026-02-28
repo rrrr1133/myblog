@@ -45,7 +45,7 @@ function formatDate(dateStr) {
 
 function getRandomThumbnail() {
   const n = Math.floor(Math.random() * 6) + 1;
-  return `./img/post-background${n}.png`;
+  return `./assets/img/post-background${n}.png`;
 }
 
 // localStorage 포스트 관리

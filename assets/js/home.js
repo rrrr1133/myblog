@@ -49,7 +49,7 @@ function createPostCard(post) {
     <div class="post-img" style="background-image: url('${thumbnail}')"></div>
     <h2 class="post-title">${post.title || '(제목 없음)'}</h2>
     <div class="post-author">
-      <div class="author-avatar"><img src="./img/profile.png" alt="author" /></div>
+      <div class="author-avatar"><img src="./assets/img/profile.png" alt="author" /></div>
       <span class="author-name">${post.author || ''}</span>
       <div class="author-divider"></div>
       <span class="post-date">${dateStr}</span>
