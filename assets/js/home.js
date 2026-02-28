@@ -9,6 +9,7 @@ const btnLoadMore = document.getElementById('btn-load-more');
 
 const POSTS_PER_PAGE = 6;
 let allPosts = [];
+let rawPosts = [];
 let shownCount = POSTS_PER_PAGE;
 
 // 로그인한 사용자 이름 표시
@@ -57,7 +58,7 @@ function createPostCard(post) {
     <p class="post-excerpt">${excerpt}</p>
   `;
   article.addEventListener('click', () => {
-    const dbId = post.index ? String(post.index) : String(allPosts.indexOf(post) + 1);
+    const dbId = post.index ? String(post.index) : String(rawPosts.indexOf(post) + 1);
     sessionStorage.setItem('currentPost', JSON.stringify({ ...post, _dbId: dbId }));
     const navId = post.index || post.id || post._id;
     window.location.href = `./post-view.html?id=${navId}`;
@@ -121,8 +122,11 @@ async function loadPosts() {
     if (!res.ok) throw new Error('fetch failed');
     const posts = await res.json();
 
-    // API 전체 포스트 표시, 없으면 localStorage 폴백
-    allPosts = posts.length > 0 ? posts : getLocalPosts(getUsername());
+    // 원본 배열 보관 (_dbId 계산에 사용)
+    rawPosts = posts;
+    // title이 없는 soft-delete 항목 제외, 없으면 localStorage 폴백
+    const validPosts = posts.filter(p => p.title);
+    allPosts = validPosts.length > 0 ? validPosts : getLocalPosts(getUsername());
     shownCount = POSTS_PER_PAGE;
     renderPosts();
   } catch {

@@ -250,13 +250,61 @@ HTML에 초기 더미 텍스트를 직접 작성해두어 API 응답과 무관�
 
 ---
 
+### 삭제 후 빈 카드가 홈에 잔존하는 문제
+
+**발생 상황**
+포스트 삭제 후 홈으로 돌아갔을 때 해당 카드가 사라지지 않고 제목·내용이 비어있는 빈 카드로 남아 있음
+
+**원인**
+API의 DELETE 엔드포인트가 **soft delete** 방식으로 동작 — 레코드를 실제로 삭제하지 않고 `title`, `content` 등 필드만 `null`로 초기화함.
+`GET /blog` 응답에 `{ title: null, content: null, ... }` 형태의 레코드가 여전히 포함되어 홈 화면에 빈 카드로 렌더링됨
+
+**해결**
+`home.js`의 `loadPosts()`에서 API 응답을 렌더링하기 전 `title`이 없는 항목을 필터링하여 제외
+```js
+const validPosts = posts.filter(p => p.title);
+allPosts = validPosts.length > 0 ? validPosts : getLocalPosts(getUsername());
+```
+
+---
+
+### 수정 페이지 진입 시 폼이 비어 있는 문제
+
+**발생 상황**
+수정 버튼 클릭 후 포스트 작성 페이지로 이동했을 때 제목·본문이 채워지지 않고 빈 폼으로 표시됨
+
+**원인**
+`home.js`에서 빈 카드 필터링(`posts.filter(p => p.title)`) 적용 후, `allPosts`(필터된 배열) 기준의 인덱스로 `_dbId`를 계산하는 것이 문제의 출발점.
+API 원본에 soft-delete된 항목이 앞에 있으면 필터된 위치 ≠ 실제 db_id가 되어 틀린 정수가 저장됨.
+이 틀린 `_dbId`로 `GET /blog/{id}` 를 호출하면 다른 포스트(또는 soft-deleted 포스트)가 200 OK로 반환되고 `title`이 없거나 다른 내용이 채워짐.
+sessionStorage fallback은 API가 200을 반환했기 때문에 실행되지 않음.
+
+**해결**
+세 파일을 연계하여 수정
+
+1. **`home.js`** — 필터 전 원본 배열(`rawPosts`)을 별도 보관하고 `_dbId` 계산에 활용
+   ```js
+   rawPosts = posts; // 원본 보관
+   const validPosts = posts.filter(p => p.title);
+   // 카드 클릭 시: rawPosts.indexOf(post) + 1  ← 정확한 db_id
+   ```
+2. **`post-view.js`** — 수정 버튼 클릭 시 `editPost`에 `_editDbId` 포함하여 저장
+   ```js
+   sessionStorage.setItem('editPost', JSON.stringify({ ...currentPost, _editDbId: realDeleteId }));
+   ```
+3. **`post-write.js`** — sessionStorage를 API보다 먼저 읽어 pre-fill하고, `editDbId`로 PUT/DELETE 수행
+   ```js
+   // loadPost(): sessionStorage 우선 → API fallback
+   if (post._editDbId) editDbId = String(post._editDbId);
+   // savePost(): editDbId 사용
+   res = await apiFetch(`/blog/${editDbId}`, { method: 'PUT', body });
+   ```
+
+---
+
 ## 개발하면서 느낀점
 
-1차 프로젝트를 개인으로 진행할 때는 해결하기 어려운 문제에 부딪히면 오로지 인터넷 검색에 의존하거나 혼자 끙끙 앓으며 해결해야 했기에, 막막함과 심리적 부담감이 커서 힘든 순간이 많았다.
-
-이번 팀 프로젝트(HODU_MARKET)를 수행하면서는 나보다 앞서 나가는 팀원에게 조언을 구해 효율적으로 문제를 해결할 수 있었고, 모두가 답을 찾기 어려운 상황에서는 함께 머리를 맞대고 고민하며 최선의 방향을 찾아 나아갈 수 있었다. 이런 집단지성의 과정이 서로에게 큰 의지가 되었음은 물론, 혼자였다면 포기했을 상황에서도 다시 나아갈 수 있는 원동력이 되어 프로젝트 완수에 큰 도움이 되었다고 생각한다.
-
-이번 개인 프로젝트에서는 팀에서 익힌 **API 연동, 로그인 상태 분기 처리, sessionStorage 활용** 패턴을 혼자서도 직접 적용해보며, 스스로 문제를 발견하고 해결하는 경험을 쌓을 수 있었다.
+이번 개인 프로젝트에서는 저번 팀 프로젝트에서 익힌 **API 연동, 로그인 상태 분기 처리, sessionStorage 활용** 패턴을 혼자서도 직접 적용해보며, 스스로 문제를 발견하고 해결하는 경험을 쌓을 수 있었다.
 
 ---
 

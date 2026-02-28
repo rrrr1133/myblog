@@ -36,7 +36,13 @@ if (btnTop) btnTop.addEventListener('click', () => window.scrollTo({ top: 0, beh
 // 수정 버튼
 if (btnModify) {
   btnModify.addEventListener('click', () => {
-    window.location.href = `./post-write.html?id=${postId}`;
+    if (currentPost) {
+      sessionStorage.setItem('editPost', JSON.stringify({
+        ...currentPost,
+        _editDbId: realDeleteId || postId,
+      }));
+    }
+    window.location.href = `./post-write.html?id=${realDeleteId || postId}`;
   });
 }
 
@@ -116,13 +122,24 @@ async function loadPost() {
       if (cached) {
         const cachedPost = JSON.parse(cached);
         renderPost(cachedPost);
-        // 1순위: home.js가 저장한 db_id
+        // 1순위: home.js / saveAndNavigate가 저장한 db_id
         if (cachedPost._dbId) {
           realDeleteId = String(cachedPost._dbId);
         } else {
-          // 2순위: localStorage에 저장된 index
-          const localPost = getLocalPosts(getUsername()).find(p => p.id === postId || p._id === postId);
-          if (localPost?.index) realDeleteId = String(localPost.index);
+          // 2순위: GET /blog로 배열 위치(=db_id) 직접 계산
+          try {
+            const listRes = await fetch(API_BASE + '/blog', { cache: 'no-store' });
+            if (listRes.ok) {
+              const posts = await listRes.json();
+              const idx = posts.findIndex(p => p.id === postId || p._id === postId);
+              if (idx >= 0) realDeleteId = String(idx + 1);
+            }
+          } catch {}
+          // 3순위: localStorage index
+          if (!realDeleteId) {
+            const localPost = getLocalPosts(getUsername()).find(p => p.id === postId || p._id === postId);
+            if (localPost?.index) realDeleteId = String(localPost.index);
+          }
         }
       } else {
         window.location.href = './home.html';

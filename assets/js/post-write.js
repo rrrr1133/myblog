@@ -14,6 +14,7 @@ requireAuth();
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
 const isEditMode = !!postId;
+let editDbId = postId; // 정확한 정수 ID (sessionStorage에서 덮어씀)
 
 // DOM 요소
 const titleInput = document.querySelector('.write-title');
@@ -104,7 +105,7 @@ if (btnWriteDelete) {
       return;
     }
     try {
-      const res = await apiFetch(`/blog/${postId}`, { method: 'DELETE' });
+      const res = await apiFetch(`/blog/${editDbId}`, { method: 'DELETE' });
       deleteLocalPost(postId, getUsername());
       if (res.status === 401) {
         clearAuth();
@@ -155,7 +156,7 @@ async function savePost() {
   let res;
 
   if (isEditMode) {
-    res = await apiFetch(`/blog/${postId}`, { method: 'PUT', body });
+    res = await apiFetch(`/blog/${editDbId}`, { method: 'PUT', body });
   } else {
     res = await apiFetch('/blog', { method: 'POST', body });
   }
@@ -204,8 +205,8 @@ async function saveAndNavigate() {
     if (!data) return;
 
     if (isEditMode) {
-      // 수정 완료: 기존 ID로 상세 페이지 이동
-      window.location.href = `./post-view.html?id=${postId}`;
+      // 수정 완료: 정확한 db_id로 상세 페이지 이동
+      window.location.href = `./post-view.html?id=${editDbId}`;
     } else {
       // 신규 포스트: sessionStorage에 저장 후 상세 페이지로 직접 이동
       const username = getUsername();
@@ -308,15 +309,29 @@ if (btnAiDraft) {
 async function loadPost() {
   if (!isEditMode) return;
   try {
-    const res = await apiFetch(`/blog/${postId}`);
-    if (!res.ok) {
-      window.location.href = './home.html';
+    // sessionStorage 먼저 시도 — 항상 정확한 내용 보장
+    const cached = sessionStorage.getItem('editPost');
+    sessionStorage.removeItem('editPost');
+    if (cached) {
+      const post = JSON.parse(cached);
+      titleInput.value = post.title || '';
+      contentTextarea.value = post.content || '';
+      if (post._editDbId) editDbId = String(post._editDbId);
+      checkFields();
       return;
     }
-    const post = await res.json();
-    titleInput.value = post.title || '';
-    contentTextarea.value = post.content || '';
-    checkFields();
+    // sessionStorage 없으면 API로 폴백
+    const res = await apiFetch(`/blog/${postId}`);
+    if (res.ok) {
+      const post = await res.json();
+      if (post.title) { // soft-deleted 항목 방어
+        titleInput.value = post.title || '';
+        contentTextarea.value = post.content || '';
+        checkFields();
+        return;
+      }
+    }
+    window.location.href = './home.html';
   } catch {
     window.location.href = './home.html';
   }
