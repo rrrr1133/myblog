@@ -1,5 +1,7 @@
 requireAuth();
 
+let currentPost = null;
+
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
 
@@ -53,14 +55,15 @@ if (btnModalCancel) {
 if (btnModalConfirm) {
   btnModalConfirm.addEventListener('click', async () => {
     try {
-      const res = await apiFetch(`/blog/${postId}`, { method: 'DELETE' });
-      if (res.ok) {
-        deleteLocalPost(postId, getUsername());
-        window.location.href = './home.html';
-      } else {
-        alert('삭제에 실패했습니다.');
-        deleteModal.style.display = 'none';
+      const deleteId = currentPost?.index || postId;
+      const res = await apiFetch(`/blog/${deleteId}`, { method: 'DELETE' });
+      deleteLocalPost(postId, getUsername());
+      if (res.status === 401) {
+        clearAuth();
+        window.location.href = './index.html';
+        return;
       }
+      window.location.href = './home.html';
     } catch {
       alert('서버 연결에 실패했습니다.');
       deleteModal.style.display = 'none';
@@ -76,6 +79,7 @@ if (deleteModal) {
 }
 
 function renderPost(post) {
+  currentPost = post;
   document.title = post.title || 'Post View';
   if (postTitle) postTitle.textContent = post.title || '';
   if (authorName) authorName.textContent = post.author || '';
@@ -83,11 +87,10 @@ function renderPost(post) {
   if (post.author === getUsername() && postActions) {
     postActions.style.display = 'flex';
   }
-  if (post.thumbnail && contentImg) {
-    contentImg.style.backgroundImage = `url('${post.thumbnail}')`;
+  if (contentImg) {
+    const imgSrc = post.thumbnail || getRandomThumbnail();
+    contentImg.style.backgroundImage = `url('${imgSrc}')`;
     contentImg.style.display = 'block';
-  } else if (contentImg) {
-    contentImg.style.display = 'none';
   }
   if (postContent) postContent.textContent = post.content || '';
 }

@@ -38,7 +38,7 @@ if (btnTop) {
 }
 
 function createPostCard(post) {
-  const thumbnail = post.thumbnail || getRandomThumbnail();
+  const thumbnail = post.thumbnail || getRandomPostImg();
   const dateStr = formatDate(post.date);
   const excerpt = post.content ? post.content.slice(0, 80) + (post.content.length > 80 ? '...' : '') : '';
 

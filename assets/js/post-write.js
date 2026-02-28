@@ -105,13 +105,13 @@ if (btnWriteDelete) {
     }
     try {
       const res = await apiFetch(`/blog/${postId}`, { method: 'DELETE' });
-      if (res.ok) {
-        deleteLocalPost(postId, getUsername());
-        window.location.href = './home.html';
-      } else {
-        alert('삭제에 실패했습니다.');
-        deleteModal.style.display = 'none';
+      deleteLocalPost(postId, getUsername());
+      if (res.status === 401) {
+        clearAuth();
+        window.location.href = './index.html';
+        return;
       }
+      window.location.href = './home.html';
     } catch {
       alert('서버 연결에 실패했습니다.');
       deleteModal.style.display = 'none';

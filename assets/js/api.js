@@ -48,6 +48,11 @@ function getRandomThumbnail() {
   return `./assets/img/post-background${n}.png`;
 }
 
+function getRandomPostImg() {
+  const n = Math.floor(Math.random() * 6) + 1;
+  return `./assets/img/post-img${n}.png`;
+}
+
 // localStorage 포스트 관리
 function getLocalPosts(username) {
   return JSON.parse(localStorage.getItem(`posts_${username}`) || '[]');
